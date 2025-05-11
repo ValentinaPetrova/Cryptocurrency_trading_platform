@@ -1,30 +1,33 @@
 package com.crypto.traiding.controller;
 
-import com.crypto.traiding.repo.UserRepo;
+import com.crypto.traiding.service.AccountService;
 import org.springframework.web.bind.annotation.*;
 
+import java.math.BigDecimal;
+
 @RestController
-@RequestMapping("/api/users")
 public class UserController {
 
-    private final UserRepo userRepo;
+    private final AccountService accountService;
 
-    public UserController(UserRepo userRepo) {
-        this.userRepo = userRepo;
+    public UserController(AccountService accountService) {
+        this.accountService = accountService;
     }
 
-    @PostMapping("/{id}/reset")
-    public void resetUserBalance(@PathVariable int id) {
-        userRepo.resetUserBalance(id);
+    // Get current balance of a user
+    @GetMapping("/api/user/balance")
+    public BigDecimal getUserBalance(@RequestParam Long userId) {
+        return accountService.getBalance(userId);
     }
 
-    @GetMapping("/{id}/balance")
-    public double getUserBalance(@PathVariable int id) {
-        return userRepo.getUserBalance(id);
-    }
-
-    @PostMapping("/init")
-    public void createUserIfNotExists() {
-        userRepo.createUserIfNotExists();
+    // Reset user's account balance
+    @PostMapping("/api/user/reset")
+    public String resetUserBalance(@RequestParam Long userId) {
+        try {
+            accountService.resetBalance(userId);
+            return "Account balance reset!";
+        } catch (Exception e) {
+            return "Error: " + e.getMessage();
+        }
     }
 }
