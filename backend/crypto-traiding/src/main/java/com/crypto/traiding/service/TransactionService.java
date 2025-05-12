@@ -32,5 +32,9 @@ public class TransactionService {
     public void resetTransactions(Long userId) {
         String sql = "DELETE FROM transactions WHERE user_id = ?";
         jdbcTemplate.update(sql, userId);
+
+        BigDecimal initialBalance = new BigDecimal("1000.00");
+        String updateSql = "UPDATE users SET balance = ? WHERE id = 1";
+        jdbcTemplate.update(updateSql, initialBalance);
     }
 }

@@ -159,3 +159,20 @@ function getTransactions() {
     });
 }
 
+//6. Reset
+function resetAccount() {
+  const userId = 1;
+  fetch(`${baseUrl}/transactions/reset?userId=${userId}`, {
+    method: 'POST'
+  })
+    .then(res => res.text())
+    .then(message => {
+      document.getElementById("resetOutput").textContent = message;
+      getBalance();       // Refresh balance
+      getPortfolio();     // Refresh portfolio (should now be empty)
+    })
+    .catch(err => {
+      console.error("Reset error", err);
+      document.getElementById("resetOutput").textContent = "Failed to reset account.";
+    });
+}
