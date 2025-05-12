@@ -4,6 +4,26 @@
   <meta charset="UTF-8">
   <title>Crypto Trading Platform</title>
   <link rel="stylesheet" href="style.css">
+  <style>
+    table {
+      width: 60%;
+      border-collapse: collapse;
+      margin: 10px auto;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+    th, td {
+      border: 1px solid #ddd;
+      padding: 10px;
+      text-align: center;
+    }
+    th {
+      background-color: #1e90ff;
+      color: white;
+    }
+    tr:nth-child(even) {
+      background-color: #f9f9f9;
+    }
+  </style>
 </head>
 <body>
 
@@ -11,13 +31,23 @@
 
   <!-- Balance Section -->
   <h2>User Balance</h2>
-  <button onclick="getBalance()">Check Balance</button>
+  <button onclick="getBalance()">Get Balance</button>
   <pre id="balanceOutput"></pre>
 
   <!-- Crypto Prices -->
   <h2>Crypto Prices</h2>
-  <button onclick="getPrices()">Get Prices</button>
-  <pre id="priceOutput"></pre>
+  <button onclick="getPrices()">Get Latest Prices</button>
+  <table id="priceTable">
+    <thead>
+      <tr>
+        <th>Symbol</th>
+        <th>Price (USD)</th>
+      </tr>
+    </thead>
+    <tbody>
+      <!-- Dynamic content will be inserted here -->
+    </tbody>
+  </table>
 
   <!-- Portfolio -->
   <h2>Portfolio</h2>
