@@ -31,15 +31,63 @@ function getPrices() {
 }
 
 // 3. Get Portfolio
+function renderPortfolio(holdings, totalValue, profitLoss) {
+  const summary = document.getElementById("portfolioSummary");
+  const output = document.getElementById("portfolioOutput");
+
+  summary.innerHTML = `
+    <p><strong>Total Value:</strong> $${totalValue.toFixed(2)}</p>
+    <p><strong>Profit/Loss:</strong> <span style="color:${profitLoss >= 0 ? 'green' : 'red'};">
+      $${profitLoss.toFixed(2)}</span></p>
+  `;
+
+  if (!holdings || Object.keys(holdings).length === 0) {
+    output.innerHTML = "<p>No holdings found.</p>";
+    return;
+  }
+
+  const table = document.createElement("table");
+  table.innerHTML = `
+    <thead>
+      <tr>
+        <th>Symbol</th>
+        <th>Quantity</th>
+      </tr>
+    </thead>
+    <tbody>
+      ${Object.entries(holdings).map(([symbol, quantity]) => `
+        <tr>
+          <td>${symbol}</td>
+          <td>${parseFloat(quantity).toFixed(4)}</td>
+        </tr>
+      `).join("")}
+    </tbody>
+  `;
+  output.innerHTML = "";
+  output.appendChild(table);
+}
+
 function getPortfolio() {
-  const userId = 1; // Hardcoded for now; later, make this dynamic
+  const userId = 1;
+
+  // Fetch holdings
   fetch(`${baseUrl}/portfolio/${userId}/holdings`)
     .then(res => res.json())
-    .then(data => {
-      document.getElementById("portfolioOutput").textContent = JSON.stringify(data, null, 2);
+    .then(holdings => {
+      // Fetch current value and profit/loss in parallel
+      Promise.all([
+        fetch(`${baseUrl}/portfolio/${userId}/value`).then(r => r.json()),
+        fetch(`${baseUrl}/portfolio/${userId}/profit-loss`).then(r => r.json())
+      ]).then(([totalValue, profitLoss]) => {
+        renderPortfolio(holdings, totalValue, profitLoss);
+      });
     })
-    .catch(err => console.error("Portfolio error", err));
+    .catch(err => {
+      console.error("Error loading portfolio", err);
+      document.getElementById("portfolioOutput").innerHTML = "<p>Error loading portfolio data.</p>";
+    });
 }
+
 
 // 4. Execute Trade
 function makeTrade() {
@@ -110,3 +158,4 @@ function getTransactions() {
       document.getElementById("transactionOutput").textContent = "Failed to load transactions.";
     });
 }
+
