@@ -1,4 +1,3 @@
-// File: com/crypto/traiding/api/kraken/store/KrakenPriceStore.java
 package com.crypto.traiding.api.store;
 
 import java.math.BigDecimal;

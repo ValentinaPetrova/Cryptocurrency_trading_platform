@@ -1,4 +1,4 @@
-package com.crypto.traiding;
+package com.crypto.traiding.controller;
 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -8,6 +8,7 @@ public class PingController {
 
     @GetMapping("/ping")
     public String ping() {
-        return "pong!";
+        return "Backend is running!";
     }
 }
+

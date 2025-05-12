@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Crypto Trading Platform</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <h1>Crypto Trading Platform</h1>
+
+  <!-- Balance Section -->
+  <h2>User Balance</h2>
+  <button onclick="getBalance()">Check Balance</button>
+  <pre id="balanceOutput"></pre>
+
+  <!-- Crypto Prices -->
+  <h2>Crypto Prices</h2>
+  <button onclick="getPrices()">Get Prices</button>
+  <pre id="priceOutput"></pre>
+
+  <!-- Portfolio -->
+  <h2>Portfolio</h2>
+  <button onclick="getPortfolio()">Get Portfolio</button>
+  <pre id="portfolioOutput"></pre>
+
+  <!-- Trade -->
+  <h2>Make a Trade</h2>
+  <input id="symbol" placeholder="Symbol (e.g., BTC/USD)" />
+  <input id="amount" type="number" placeholder="Amount" />
+  <select id="type">
+    <option value="buy">Buy</option>
+    <option value="sell">Sell</option>
+  </select>
+  <button onclick="makeTrade()">Submit Trade</button>
+  <pre id="tradeOutput"></pre>
+
+  <!-- Transactions -->
+  <h2>Transaction History</h2>
+  <button onclick="getTransactions()">View Transactions</button>
+  <pre id="transactionOutput"></pre>
+
+  <!-- Link to external JS -->
+  <script src="script.js"></script>
+
+</body>
+</html>

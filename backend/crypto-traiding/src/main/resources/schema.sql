@@ -1,4 +1,4 @@
-/*CREATE TABLE users (
+CREATE TABLE users (
     id SERIAL PRIMARY KEY,
     balance DECIMAL(15, 2) NOT NULL DEFAULT 10000.00
 );
@@ -27,8 +27,8 @@ CREATE TABLE transactions (
     quantity DECIMAL(20, 8),
     price DECIMAL(20, 8),
     timestamp TIMESTAMP DEFAULT CURRENT_TIMESTAMP
-);*/
--- Users table
+);
+/*-- Users table
 CREATE TABLE users (
     user_id SERIAL PRIMARY KEY,
     username VARCHAR(50) UNIQUE NOT NULL,
@@ -72,4 +72,4 @@ CREATE TABLE holdings (
     quantity DECIMAL(20, 8) NOT NULL DEFAULT 0,
     avg_purchase_price DECIMAL(20, 8),
     UNIQUE(account_id, crypto_id)
-);
+);*/
