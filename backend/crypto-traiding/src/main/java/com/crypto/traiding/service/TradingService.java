@@ -28,10 +28,19 @@ public class TradingService {
     }
 
     public void sell(Long userId, String symbol, BigDecimal quantity) {
-        BigDecimal price = cryptoPriceService.getPrice(symbol);
-        BigDecimal gain = price.multiply(quantity);
+        BigDecimal totalBought = transactionService.getTotalBought(userId, symbol);
+        BigDecimal totalSold = transactionService.getTotalSold(userId, symbol);
+        BigDecimal currentHolding = totalBought.subtract(totalSold);
 
-        accountService.addBalance(userId, gain);
-        transactionService.recordTransaction(userId, "sell", symbol, quantity, price);
+        if (quantity.compareTo(currentHolding) > 0) {
+            throw new IllegalArgumentException("Not enough " + symbol + " to sell. Current holding: " + currentHolding);
+        }
+        else{
+            BigDecimal price = cryptoPriceService.getPrice(symbol);
+            BigDecimal gain = price.multiply(quantity);
+
+            accountService.addBalance(userId, gain);
+            transactionService.recordTransaction(userId, "sell", symbol, quantity, price);
+        }
     }
 }

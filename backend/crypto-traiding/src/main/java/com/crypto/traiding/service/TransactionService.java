@@ -37,4 +37,14 @@ public class TransactionService {
         String updateSql = "UPDATE users SET balance = ? WHERE id = 1";
         jdbcTemplate.update(updateSql, initialBalance);
     }
+
+    public BigDecimal getTotalBought(Long userId, String symbol) {
+        String sql = "SELECT COALESCE(SUM(quantity), 0) FROM transactions WHERE user_id = ? AND symbol = ? AND type = 'buy'";
+        return jdbcTemplate.queryForObject(sql, BigDecimal.class, userId, symbol);
+    }
+
+    public BigDecimal getTotalSold(Long userId, String symbol) {
+        String sql = "SELECT COALESCE(SUM(quantity), 0) FROM transactions WHERE user_id = ? AND symbol = ? AND type = 'sell'";
+        return jdbcTemplate.queryForObject(sql, BigDecimal.class, userId, symbol);
+    }
 }
