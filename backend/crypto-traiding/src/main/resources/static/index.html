@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Crypto Trading Platform</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    table {
+      width: 60%;
+      border-collapse: collapse;
+      margin: 10px auto;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+    th, td {
+      border: 1px solid #ddd;
+      padding: 10px;
+      text-align: center;
+    }
+    th {
+      background-color: #1e90ff;
+      color: white;
+    }
+    tr:nth-child(even) {
+      background-color: #f9f9f9;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Crypto Trading Platform</h1>
+
+  <!-- Balance Section -->
+  <h2>User Balance</h2>
+  <button onclick="getBalance()">Get Balance</button>
+  <pre id="balanceOutput"></pre>
+
+  <!-- Crypto Prices -->
+  <h2>Crypto Prices</h2>
+  <button onclick="getPrices()">Get Latest Prices</button>
+  <table id="priceTable">
+    <thead>
+      <tr>
+        <th>Symbol</th>
+        <th>Price (USD)</th>
+      </tr>
+    </thead>
+    <tbody>
+      <!-- Dynamic content will be inserted here -->
+    </tbody>
+  </table>
+
+  <!-- Portfolio -->
+  <h2>Portfolio</h2>
+  <button onclick="getPortfolio()">Get Portfolio</button>
+  <div id="portfolioSummary" style="text-align:center; margin-top: 15px;"></div>
+  <div id="portfolioOutput" class="portfolio-container"></div>
+
+  <!-- Trade -->
+  <h2>Make a Trade</h2>
+  <input id="symbol" placeholder="Symbol (e.g., BTC/USD)" />
+  <input id="amount" type="number" placeholder="Amount" />
+  <select id="type">
+    <option value="buy">Buy</option>
+    <option value="sell">Sell</option>
+  </select>
+  <button onclick="makeTrade()">Submit Trade</button>
+  <pre id="tradeOutput"></pre>
+
+  <!-- Transactions -->
+  <h2>Transaction History</h2>
+  <button onclick="getTransactions()">View Transactions</button>
+  <pre id="transactionOutput"></pre>
+
+  <!-- Reset Account -->
+  <h2>Reset Account</h2>
+  <button onclick="resetAccount()">Reset Account</button>
+  <pre id="resetOutput"></pre>
+
+
+  <!-- Link to external JS -->
+  <script src="script.js"></script>
+
+</body>
+</html>
