@@ -10,14 +10,12 @@ import java.util.Map;
 @Service
 public class PortfolioService {
 
-    //private final TradingService tradingService;
     private final CryptoPriceService priceService;
     private final TransactionService transactionService;
 
     public PortfolioService(TradingService tradingService, 
                             CryptoPriceService priceService,
                             TransactionService transactionService) {
-        //this.tradingService = tradingService;
         this.priceService = priceService;
         this.transactionService = transactionService;
     }
