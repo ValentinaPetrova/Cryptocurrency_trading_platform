@@ -131,7 +131,6 @@ Before running the application, ensure the following are installed on your syste
 - A web browser (e.g., Chrome, Firefox)
 
 ## ▶️ Running the Application Locally
-
 ### Clone the Repository
 First, clone the project using Git:
 git clone https://github.com/ValentinaPetrova/Cryptocurrency_trading_platform
@@ -139,7 +138,10 @@ git clone https://github.com/ValentinaPetrova/Cryptocurrency_trading_platform
 ```
 cd crypto-trading-platform
 ```
-
+### Navigate to the backend directory with the starting file:
+```
+cd Cryptocurrency_trading_platform/backend/crypto-traiding
+```
 ### Use Maven to start the Spring Boot application:
 
 ```
