@@ -18,6 +18,7 @@ A simple full-stack cryptocurrency trading simulation platform built with **Java
 ---
 
 ## 📁 Project Structure
+```
 +---.vscode
 |       settings.json
 |
@@ -114,7 +115,7 @@ A simple full-stack cryptocurrency trading simulation platform built with **Java
 |       |                       \---service
 |       |                               TradingServiceTest.java
 |       |                               TransactionService.java
-
+```
 # How to Run the Application
 
 This guide outlines how to set up and launch the Crypto Trading Platform locally for testing or evaluation purposes.
@@ -137,17 +138,13 @@ First, clone the project using Git:
 git clone https://github.com/ValentinaPetrova/Cryptocurrency_trading_platform
 
 ```
-{
 cd crypto-trading-platform
-}
 ```
 
 ### Use Maven to start the Spring Boot application:
 
 ```
-{
 mvn spring-boot:run
-}
 ```
 
 ### Access the Web Interface
