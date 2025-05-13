@@ -11,9 +11,8 @@ A simple full-stack cryptocurrency trading simulation platform built with **Java
 - 👤 User account balance handling.
 - 👜 View and manage portfolio holdings.
 - 🔁 Buy and sell cryptocurrency (with balance/holding validation).
-- 📜 Transaction history display in a professional table format.
+- 📜 Transaction history display.
 - 🔄 Reset button to restore account balance and clear portfolio.
-- ❌ Input validation and clear error handling.
 
 ---
 
